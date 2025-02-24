@@ -16,8 +16,9 @@ from torch.cuda.amp import GradScaler, autocast
 
 # import provider
 num_class = 10
-total_epoch = 120
+total_epoch = 40
 script_dir = os.path.dirname(__file__)  # 获取脚本所在的目录
+script_dir = os.path.join(script_dir, 'params')
 
 print(script_dir)
 
@@ -434,7 +435,7 @@ def main():
             #instance_acc = test(classifier.eval(), train_split_dataloader, num_class=num_class)
             #print('Test in Train Instance Accuracy: %f' % instance_acc)
 
-            if epoch > 80:
+            if epoch > 10:
                 test_acc = test(classifier.eval(), train_test_dataloader, num_class=num_class)
                 print('Trainset Test Accuracy: ', test_acc)
                 if test_acc > best_class_acc:
